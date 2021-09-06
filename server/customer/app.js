@@ -1,21 +1,39 @@
+const serverless = require('serverless-http');
+
 const express = require('express');
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
 const cors = require('cors');
-
-const app = express();
+const authRoutes = require('./routes/authRoutes');
 
 //middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+//Connect to Customers Database
+const dbURI="mongodb+srv://admin:admin@cluster0.dktgi.mongodb.net/carwash?retryWrites=true&w=majority"
+mongoose
+  .connect(dbURI, {
+    
+    useNewUrlParser: true,
+    useUnifiedTopology: true
  
+  })
+  .then(x => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch(err => {
+    console.error("Error connecting to mongo", err);
+  });
+app.use('/',[authRoutes]);
+app.listen(4000, () => console.log(`Listening on: 4000`));
+//module.exports.handler = serverless(app);
 
-//Listen to port: Default is 3000
-const port = process.env.PORT || 3000;
-app.listen( port , function(){
-    console.log("listening to port ",port);
-});
-
-
-module.exports = app;
