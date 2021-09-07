@@ -1,0 +1,33 @@
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">
+          <i>Green Wash</i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink = '/services'>Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#" routerLink = '/aboutUs'>About Us</a>
+        </li>
+      </ul>
+  
+
+      <form class="form-inline my-2 my-lg-0">
+        <a class="btn " *ngIf="!(_auth.loggedIn() || _washerauth.loggedIn() || _adminauth.loggedIn())" href="#" role="button" routerLink ='/signup'>SIGN UP</a>
+        <a class="btn " *ngIf="!(_auth.loggedIn() || _washerauth.loggedIn() || _adminauth.loggedIn())" href="#" role="button" routerLink ='/login'>LOGIN</a>
+        <a class="btn " *ngIf="_auth.loggedIn()" href="#" role="button" (click)="_auth.logoutCustomer()">LOGOUT</a>
+        <a class="btn " *ngIf="_washerauth.loggedIn()" href="#" role="button" (click)="_washerauth.logoutWasher()">LOGOUT</a>
+        <a class="btn " *ngIf="_adminauth.loggedIn()" href="#" role="button" (click)="_adminauth.logoutAdmin()">LOGOUT</a>
+      </form>
+    </div>
+  </nav>
+</body>
