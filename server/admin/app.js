@@ -14,6 +14,8 @@ const authRoutes = require('./routes/authRoutes');
 const washerRoutes = require('./routes/washerRoutes');
 const customerRoutes = require('./routes/customerRoute');
 const carRoutes = require('./routes/carRoutes');
+const servicePlanRoutes = require('./routes/serviceplanRoutes');
+const addonRoutes = require('./routes/addonRoutes');
 
 
 //middleware
@@ -38,7 +40,7 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-app.use('/',[authRoutes,washerRoutes,customerRoutes,carRoutes]);
+app.use('/',[authRoutes,washerRoutes,customerRoutes,carRoutes,servicePlanRoutes,addonRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
 
