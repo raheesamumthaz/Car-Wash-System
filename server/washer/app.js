@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
+const profileRoutes= require('./routes/profileRoutes');
 
 //middleware
 app.use(bodyParser.json());
@@ -33,7 +34,7 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-app.use('/',[authRoutes]);
+app.use('/',[authRoutes,profileRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
 
