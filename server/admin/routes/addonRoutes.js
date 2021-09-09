@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const addonController = require('../controller/addonController');
+const addonController = require('../controllers/addonController');
 const bodyParser = require('body-parser');
 const { requireAuth } = require('../middleware/authMiddleware');
 
