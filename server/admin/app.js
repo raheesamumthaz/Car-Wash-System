@@ -13,6 +13,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const washerRoutes = require('./routes/washerRoutes');
 const customerRoutes = require('./routes/customerRoute');
+const carRoutes = require('./routes/carRoutes');
 
 
 //middleware
@@ -26,6 +27,7 @@ mongoose
     
     useNewUrlParser: true,
     useUnifiedTopology: true
+   
  
   })
   .then(x => {
@@ -36,7 +38,7 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-app.use('/',[authRoutes,washerRoutes,customerRoutes]);
+app.use('/',[authRoutes,washerRoutes,customerRoutes,carRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
 
