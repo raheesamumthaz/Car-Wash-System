@@ -1,0 +1,10 @@
+const mongoose = require('mongoose');
+
+
+//connecting to the customers database with admin's credentials
+const dbURI = "mongodb+srv://raheesa:admin@cluster0.7m9bb.mongodb.net/Customer?retryWrites=true&w=majority"
+const conn= mongoose.createConnection( dbURI,{useNewUrlParser: true,useUnifiedTopology: true});
+const customer = conn.model('customers', new mongoose.Schema({}))
+
+
+module.exports = {customer};
