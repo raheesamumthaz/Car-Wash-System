@@ -1,7 +1,7 @@
 {
-  "name": "washer",
+  "name": "admin",
   "version": "1.0.0",
-  "description": "washer services",
+  "description": "admin services",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

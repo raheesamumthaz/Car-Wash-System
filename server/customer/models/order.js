@@ -117,16 +117,7 @@ const orderSchema = new mongoose.Schema({
         default:'pending',
         enum:['pending','accepted','inprocess','completed','cancelled']
     },
-    isScheduledLater:{
-        type: Boolean,
-        lowercase:true,
-        default: false
-    },
-    instructionByUser:{
-        type: String,
-        lowercase: true
-    },
-    isPaymentDone :{
+     isPaymentDone :{
         type: Boolean,
         default: false,
         lowercase: true
