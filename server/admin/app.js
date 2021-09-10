@@ -1,4 +1,6 @@
 const serverless = require('serverless-http');
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const express = require('express');
 const app = express();
@@ -42,6 +44,42 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 app.use('/',[authRoutes,washerRoutes,customerRoutes,carRoutes,servicePlanRoutes,addonRoutes,orderRoutes]);
+
+//Swagger Config
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.1",
+    info: {
+      version: "1.0.0",
+      title: "Admin API",
+      description: "API's for Admin -On demand carwash system"
+
+    },
+
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    servers: [
+      {
+        url: 'http://localhost:4000',
+        description: 'Development server'
+      },
+    ]
+  
+  },
+  
+  swagger: "2.0",
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/admin-api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
 

@@ -27,6 +27,7 @@ mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    connectTimeoutMS: 5000,
   })
   .then((x) => {
     console.log(
@@ -45,8 +46,8 @@ const swaggerOptions = {
     info: {
       version: "1.0.0",
       title: "Washer API",
-      description: "API's for Washer -On demand carwash system",
-      servers: ["http://localhost:4000"],
+      description: "API's for Washer -On demand carwash system"
+    
     },
 
     components: {
@@ -58,6 +59,12 @@ const swaggerOptions = {
         },
       },
     },
+    servers: [
+      {
+        url: 'http://localhost:4000',
+        description: 'Development server'
+      },
+    ]
   
   },
   swagger: "2.0",
@@ -65,7 +72,7 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/washer-api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);

@@ -84,6 +84,7 @@ module.exports.put_addons =function(req,res){
 //Delete a addon
 module.exports.delete_addons = function(req,res){
     const id = req.params.id;
+    console.log("re,,,",req.params)
     addOn.findByIdAndDelete(id, function(err,doc){
         if(err){
           

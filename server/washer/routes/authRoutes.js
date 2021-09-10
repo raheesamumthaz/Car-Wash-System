@@ -12,7 +12,7 @@ const router = Router();
 *    post:
 *      tags: 
 *        - name: Auth
-*      description: Signup a new washer
+*      summary: Signup a new washer
 *      requestBody:
 *        content:
 *          application/json:
@@ -45,7 +45,7 @@ router.post('/signup', urlencodedParser ,authController.post_signup);
 *    post:
 *      tags: 
 *        - name: Auth
-*      description: Login a new washer
+*      summary: Login a new washer
 *      requestBody:
 *        content:
 *          application/json:

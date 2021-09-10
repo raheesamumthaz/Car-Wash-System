@@ -4,8 +4,22 @@ const {customer} = require('../models/customer');
 const router = Router();
 
 
-// Get the total customer count
 
+/**
+ * @swagger
+ * /customersCount:
+ *  get:
+ *    tags: 
+ *      - name: Customer
+ *    security:
+ *      - bearerAuth: []
+ *    summary: Get the total customer count
+ *    responses:
+ *      '201':
+ *        description: total customer count
+ *      '400' :
+ *        description: Error occured
+ */
 router.get('/customersCount', requireAuth ,function(req,res){
     customer.count({},function(err,doc){
         if(err){

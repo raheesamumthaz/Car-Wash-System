@@ -18,6 +18,8 @@
     "mongoose": "^6.0.4",
     "nodemailer": "^6.6.3",
     "serverless-http": "^2.7.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6",
     "validator": "^13.6.0"
   }
 }

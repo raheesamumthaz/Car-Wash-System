@@ -10,7 +10,7 @@ const router = Router();
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all accepted Orders
+ *    summary: Get list of all accepted Orders
  *    responses:
  *      '201':
  *        description: list of all accepted Orders
@@ -26,7 +26,7 @@ router.get('/accepted', requireAuth, orderController.get_accepted_orders);
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all pending Orders
+ *    summary: Get list of all pending Orders
  *    responses:
  *      '201':
  *        description: list of all pending Orders
@@ -43,7 +43,7 @@ router.get('/pending',requireAuth, orderController.get_pending_orders);
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all inprocess Orders
+ *    summary: Get list of all inprocess Orders
  *    responses:
  *      '201':
  *        description: list of all inprocess Orders
@@ -58,7 +58,7 @@ router.get('/inprocess',requireAuth, orderController.get_inprocess_orders);
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all completed and paid Orders
+ *    summary: Get list of all completed and paid Orders
  *    responses:
  *      '201':
  *        description: list of all completed and paid Orders
@@ -74,7 +74,7 @@ router.get('/completedAndPaid',requireAuth, orderController.get_completed_paid_o
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all completed but unpaid Orders
+ *    summary: Get list of all completed but unpaid Orders
  *    responses:
  *      '201':
  *        description: list of all completed but unpaid Orders
@@ -90,7 +90,7 @@ router.get('/completedAndUnpaid',requireAuth, orderController.get_completed_unpa
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get list of all cancelled Orders
+ *    summary: Get list of all cancelled Orders
  *    responses:
  *      '201':
  *        description: list of all cancelled Orders
