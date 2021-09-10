@@ -35,6 +35,7 @@ const handleErrors=(err)=>{
 
 //post the washer details
 module.exports.post_profile= async function(req,res){
+    console.log("body...",req.body)
     const details = req.body;
     details.userId = req.userId;
     washerDetails.create(details, function(err,result){
@@ -67,7 +68,7 @@ module.exports.update_profile= function(req,res){
     const newData = req.body;
 
     washerDetails.findOneAndUpdate({"userId" : _id}, newData,  {new:true} ,function(err,result){
-        console.log("err,result...",err,result)
+     
         if(err){
             const error = handleErrors(err);
             res.status(400).json(error);
