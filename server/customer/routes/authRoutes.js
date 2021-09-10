@@ -15,6 +15,7 @@ router.get('/signup', authController.get_signup);
  * @swagger
  * /signup:
  *  get:
+ *    summary: create Signup status details
  *    tags: ['Auth']
  *    description: signup a new customer
  *    responses:
@@ -33,6 +34,7 @@ router.post('/signup', urlencodedParser ,authController.post_signup);
 * paths:
 *  /signup:
 *    post:
+*      summary: create Signup status details
 *      tags: 
 *        - name: Auth
 *      description: Signup a new customer
@@ -69,6 +71,7 @@ router.post('/login',urlencodedParser ,authController.post_login);
 * paths:
 *  /login:
 *    post:
+*      summary: created login status details
 *      tags: 
 *        - name: Auth
 *      description: Login a new customer
