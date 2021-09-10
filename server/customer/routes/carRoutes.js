@@ -12,7 +12,7 @@ router.get('/cars', carController.get_cars);
 * paths:
 *   /cars:
 *     get:
-*       summary: get cars status details
+*       summary: get cars  details
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']

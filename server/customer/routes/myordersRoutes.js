@@ -8,7 +8,7 @@ const router = Router();
 * paths:
 *   /accepted:
 *     get:
-*       summary: get accepted status details
+*       summary: get accepted order details
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']
@@ -26,7 +26,7 @@ router.get('/pending', requireAuth, orderController.get_pending_orders);
  * @swagger
  * /pending:
  *  get:
- *    summary: get pending status  
+ *    summary: get pending Orders  
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
@@ -45,7 +45,7 @@ router.get('/inprocess', requireAuth, orderController.get_inprocess_orders);
  * @swagger
  * /inprocess:
  *  get:
- *    summary: get inprocess status 
+ *    summary: get inprocess Orders 
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
@@ -63,7 +63,7 @@ router.get('/completedAndPaid', requireAuth, orderController.get_completed_paid_
  * @swagger
  * /completedAndPaid:
  *  get:
- *    summary: get completedAndPaid status 
+ *    summary: get completedAndPaid Orders 
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
@@ -81,7 +81,7 @@ router.get('/completedAndUnpaid', requireAuth, orderController.get_completed_unp
  * @swagger
  * /completedAndUnpaid:
  *  get:
- *    summary: get completedAndUnpaid status 
+ *    summary: get completedAndUnpaid Orders 
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']
@@ -100,7 +100,7 @@ router.get('/cancelled', requireAuth, orderController.get_cancelled_orders);
  * @swagger
  * /cancelled:
  *  get:
- *    summary: get cancelled status 
+ *    summary: get cancelled Orders 
  *    security:
  *      - bearerAuth: []
  *    tags: ['My orders']

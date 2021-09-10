@@ -33,7 +33,7 @@ module.exports.create_order = function (req, res) {
 
 module.exports.cancel_order = function (req, res) {
     const id = req.params.id;
-    console.log("orderPayment----", id);
+  
     order.findByIdAndUpdate(id, { $set: { status: 'cancelled' } }, { new: true }, function (err, doc) {
         if (err) {
             const error = handleErrors(err)

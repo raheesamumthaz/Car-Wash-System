@@ -29,7 +29,8 @@ mongoose
   .connect(dbURI, {
     
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    connectTimeoutMS: 5000,
  
   })
   .then(x => {
@@ -51,7 +52,7 @@ const swaggerOptions = {
       version: "1.0.0",
       title: "Customer API",
       description: "API's for Customer -On demand carwash system",
-      servers: ["http://localhost:4000"],
+    
     },
 
     components: {
@@ -63,6 +64,12 @@ const swaggerOptions = {
         },
       },
     },
+     servers: [
+      {
+        url: 'http://localhost:4000',
+        description: 'Development server'
+      },
+    ]
   
   },
   swagger: "2.0",

@@ -9,21 +9,7 @@ const router = Router();
 
 
 //Routes for signup
-router.get('/signup', authController.get_signup);
-
-/**
- * @swagger
- * /signup:
- *  get:
- *    summary: create Signup status details
- *    tags: ['Auth']
- *    description: signup a new customer
- *    responses:
- *      '200':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+router.get('/signup', authController.get_signup)
 
 
 router.post('/signup', urlencodedParser ,authController.post_signup);
@@ -34,7 +20,7 @@ router.post('/signup', urlencodedParser ,authController.post_signup);
 * paths:
 *  /signup:
 *    post:
-*      summary: create Signup status details
+*      summary: create Signup  details
 *      tags: 
 *        - name: Auth
 *      description: Signup a new customer
@@ -71,7 +57,7 @@ router.post('/login',urlencodedParser ,authController.post_login);
 * paths:
 *  /login:
 *    post:
-*      summary: created login status details
+*      summary: created login  details
 *      tags: 
 *        - name: Auth
 *      description: Login a new customer

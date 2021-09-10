@@ -17,7 +17,7 @@ router.get('/order', requireAuth, ordercontroller.get_order);
 * paths:
 *   /order:
 *     get:
-*       summary: get order status details
+*       summary: get order  details
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']
@@ -102,7 +102,7 @@ router.put('/order/:id', urlencodedparser, ordercontroller.cancel_order);
 * paths:
 *   /order/{id}:
 *     put:
-*       summary: change order status to accepted
+*       summary: change order status to cancelled
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']
@@ -112,7 +112,7 @@ router.put('/order/:id', urlencodedparser, ordercontroller.cancel_order);
 *           type: string
 *           required: true
 *           example: 613770dca6f97714e897e8aa
-*           description: Object Id of the order to get. 
+*           description: Object Id of the order to canel. 
 *       responses:
 *         '200':
 *           description: upated order details
@@ -127,7 +127,7 @@ router.put('/orderPayment/:id', requireAuth, urlencodedparser, ordercontroller.o
 * paths:
 *   /orderPayment/{id}:
 *     put:
-*       summary: change orderPayment status to accepted
+*       summary: change orderPayment status to completed
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']
@@ -153,7 +153,7 @@ router.put('/washcount', requireAuth, urlencodedparser, ordercontroller.increase
 * paths:
 *   /washcount:
 *     put:
-*       summary: get washcount status to accepted
+*       summary: Increase wash count
 *       security:
 *         - bearerAuth: []
 *       tags: ['Orders']

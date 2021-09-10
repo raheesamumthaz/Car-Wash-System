@@ -63,7 +63,7 @@ router.post('/profile', requireAuth,  urlencodedParser, profileController.post_p
 *                    }
 *      responses:
 *        '201':
-*          description: order profile
+*          description: profile details
 *        '400':
 *          description: Error occured        
 */
@@ -74,11 +74,11 @@ router.get('/profile', requireAuth, urlencodedParser,profileController.get_speci
  * @swagger
  * /profile:
  *  get:
- *    summary: get profile details 
+ *    summary: get spcific profile details 
  *    security:
  *      - bearerAuth: []
- *    tags: ['Profile']
- *    description: Get list of all profile 
+ *    tags: 
+ *      - name: Profile
  *    responses:
  *      '200':
  *        description: list of all profile 

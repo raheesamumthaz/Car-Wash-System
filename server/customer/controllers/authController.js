@@ -71,10 +71,10 @@ module.exports.post_login = async function(req,res){
     try {
       const user = await User.login(email, password);
       const token = createToken(user._id); 
-      //res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000}); 
+      res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000}); 
       res.status(201).send({token});
     } catch (error) {
-        console.log("error--------",error);
+     
         const err = handleErrors(error);
         res.status(400).json(err);
     }
