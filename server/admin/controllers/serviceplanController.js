@@ -91,7 +91,7 @@ module.exports.delete_Service = function(req,res)
     const id = req.params.id;
     servicePlan.findByIdAndDelete(id, function(err,doc){
         if(err){
-            console.log(err);
+           
             res.status(400).json(err);
         }
         else{

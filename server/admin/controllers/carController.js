@@ -33,7 +33,7 @@ module.exports.get_car = function (req, res) {
   const id = req.params.id;
   car.findById(id, function (err, doc) {
     if (err) {
-      console.log(err);
+   
       res.status(400).json(err);
     } else {
       res.status(201).json(doc);

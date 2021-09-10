@@ -45,7 +45,7 @@ module.exports.get_addon = function(req,res){
     const id = req.params.id;
     addOn.findById(id,function(err,doc){
         if(err){
-            console.log(err);
+          
             res.status(400).json(err);
         }else {
             res.status(201).send(doc);
@@ -72,7 +72,7 @@ module.exports.put_addons =function(req,res){
     const newaddon = req.body;
     addOn.findByIdAndUpdate(id, newaddon, {new:true} , function(err,doc){
         if(err){
-            console.log(err);
+           
             res.status(400).json(err);
         }
         else{
@@ -86,7 +86,7 @@ module.exports.delete_addons = function(req,res){
     const id = req.params.id;
     addOn.findByIdAndDelete(id, function(err,doc){
         if(err){
-            console.log(err);
+          
             res.status(400).json(err);
         }
         else{
