@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(cors());
 //Connect to Customers Database
 const dbURI =
-  "mongodb+srv://raheesa:admin@cluster0.7m9bb.mongodb.net/Washer?retryWrites=true&w=majority";
+  "mongodb+srv://washer:admin@cluster0.7m9bb.mongodb.net/Washer?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
@@ -74,5 +74,5 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/washer-api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.listen(4000, () => console.log(`Listening on: 4000`));
-//module.exports.handler = serverless(app);
+//app.listen(4000, () => console.log(`Listening on: 4000`));
+module.exports.handler = serverless(app);

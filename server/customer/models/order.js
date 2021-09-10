@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const { isMobilePhone} = require('validator');
 
 
-// //Connecting to orders database
-// const dbURI="mongodb+srv://Customer:123cust@cluster0.gulvu.mongodb.net/orders?retryWrites=true&w=majority";
-// const orderConn =mongoose.createConnection( dbURI,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+
+//connecting to the Orders database with customer credentials
+const dbURI="mongodb+srv://customer:admin@cluster0.7m9bb.mongodb.net/Order?retryWrites=true&w=majority"
+const conn= mongoose.createConnection( dbURI,{useNewUrlParser: true,useUnifiedTopology: true});
 
 const orderSchema = new mongoose.Schema({
     userDetails :{

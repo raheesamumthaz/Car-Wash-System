@@ -80,6 +80,6 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/admin-api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-app.listen(4000, () => console.log(`Listening on: 4000`));
-//module.exports.handler = serverless(app);
+//app.listen(4000, () => console.log(`Listening on: 4000`));
+module.exports.handler = serverless(app);
 

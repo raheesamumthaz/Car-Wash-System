@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 //Connect to Customers Database
-const dbURI="mongodb+srv://admin:admin@cluster0.dktgi.mongodb.net/carwash?retryWrites=true&w=majority"
+const dbURI="mongodb+srv://customer:admin@cluster0.dktgi.mongodb.net/Customer?retryWrites=true&w=majority"
 mongoose
   .connect(dbURI, {
     
@@ -81,6 +81,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
 
 
-app.listen(4000, () => console.log(`Listening on: 4000`));
-//module.exports.handler = serverless(app);
+//app.listen(4000, () => console.log(`Listening on: 4000`));
+module.exports.handler = serverless(app);
 

@@ -3,7 +3,7 @@ const { isMobilePhone } = require("validator");
 
 //Connecting to orders database
 const dbURI =
-  "mongodb+srv://raheesa:admin@cluster0.7m9bb.mongodb.net/Orders?retryWrites=true&w=majority";
+  "mongodb+srv://washer:admin@cluster0.7m9bb.mongodb.net/Orders?retryWrites=true&w=majority";
 const orderConn = mongoose.createConnection(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
