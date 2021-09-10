@@ -5,60 +5,70 @@ const authController = require('../controllers/authController');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const router = Router();
-
 /**
- * @swagger
- * /signup:
- *  post:
- *    tags: ['auth']
- *    description: signup a new washer
- *    parameters:
- *      - in: body
- *        name: Washer
- *        description: The washer details for signup.
- *        schema:
- *          type: object
- *          required:
- *            - email
- *            - password
- *          properties:
- *            email:
- *              type: string
- *            password:
- *              type: string         
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*  /signup:
+*    post:
+*      tags: 
+*        - name: Auth
+*      description: Signup a new washer
+*      requestBody:
+*        content:
+*          application/json:
+*            schema:
+*              type: object
+*              properties:
+*                password:
+*                  type: string
+*                email:
+*                  type: string
+*            examples:
+*              '0':
+*                value: |-
+*                  {
+*                      "email":"Washer@gmail.com",
+*                      "password":"Washer@123"
+*                  }
+*      responses:
+*        '201':
+*          description: Userid Washer
+*        '400':
+*          description: Error occured        
+*/
+
 router.post('/signup', urlencodedParser ,authController.post_signup);
 /**
- * @swagger
- * /login:
- *  post:
- *    tags: ['auth']
- *    description: login a new washer
- *    parameters:
- *      - in: body
- *        name: Washer
- *        description: The washer details for login.
- *        schema:
- *          type: object
- *          required:
- *            - email
- *            - password
- *          properties:
- *            email:
- *              type: string
- *            password:
- *              type: string         
- *    responses:
- *      '201':
- *        description: JWT token of Washer
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*  /login:
+*    post:
+*      tags: 
+*        - name: Auth
+*      description: Login a new washer
+*      requestBody:
+*        content:
+*          application/json:
+*            schema:
+*              type: object
+*              properties:
+*                password:
+*                  type: string
+*                email:
+*                  type: string
+*            examples:
+*              '0':
+*                value: |-
+*                  {
+*                      "email":"Washer@gmail.com",
+*                      "password":"Washer@123"
+*                  }
+*      responses:
+*        '201':
+*          description: JWT of logged in Washer
+*        '400':
+*          description: Error occured        
+*/
 router.post('/login', urlencodedParser ,authController.post_login);
 
 

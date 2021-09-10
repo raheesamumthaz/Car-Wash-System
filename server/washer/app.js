@@ -41,28 +41,31 @@ app.use("/", [authRoutes, profileRoutes, orderRoutes, myordersRoutes]);
 //Swagger Config
 const swaggerOptions = {
   swaggerDefinition: {
+    openapi: "3.0.1",
     info: {
       version: "1.0.0",
       title: "Washer API",
       description: "API's for Washer -On demand carwash system",
-      server: ["http://localhost:4000"],
-      components: {
-        securitySchemes: {
-          bearerAuth: {
-            type: "http",
-            scheme: "bearer",
-            bearerFormat: "JWT" 
-          }
-        }
-      }
-      
+      servers: ["http://localhost:4000"],
     },
+
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+  
   },
+  swagger: "2.0",
   apis: ["./routes/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
