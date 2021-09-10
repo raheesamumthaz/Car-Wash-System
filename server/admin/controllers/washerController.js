@@ -1,4 +1,5 @@
 const { washer } = require("../models/washer");
+const mail = require('../services/mail');
 module.exports.get_all_washers = function (req, res) {
   washer.find({}, function (err, docs) {
     if (err) {
@@ -39,8 +40,9 @@ module.exports.update_washer = function (req, res) {
     { new: true },
     function (err, doc) {
       if (err) {
-        res.status(400).json(err);
+             res.status(400).json(err);
       } else {
+        mail.acceptedMailToWasher(doc.email);
         res.status(201).send(doc);
       }
     }
@@ -51,8 +53,10 @@ module.exports.delete_washer = function (req, res) {
   const id = req.params.id;
   washer.findByIdAndDelete(id, function (err, doc) {
     if (err) {
+      
       res.status(400).json(err);
     } else {
+      mail.rejectedMailToWasher(doc.email);
       res.status(201).send("Document deleted successfully");
     }
   });

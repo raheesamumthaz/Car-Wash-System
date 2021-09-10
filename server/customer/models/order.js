@@ -117,11 +117,7 @@ const orderSchema = new mongoose.Schema({
         default:'pending',
         enum:['pending','accepted','inprocess','completed','cancelled']
     },
-    instructionByUser:{
-        type: String,
-        lowercase: true
-    },
-    isPaymentDone :{
+     isPaymentDone :{
         type: Boolean,
         default: false,
         lowercase: true

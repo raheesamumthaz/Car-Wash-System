@@ -12,6 +12,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const profileRoutes= require('./routes/profileRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const myordersRoutes = require('./routes/myordersRoutes');
 
 //middleware
 app.use(bodyParser.json());
@@ -34,7 +36,7 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-app.use('/',[authRoutes,profileRoutes]);
+app.use('/',[authRoutes,profileRoutes,orderRoutes,myordersRoutes]);
 app.listen(4000, () => console.log(`Listening on: 4000`));
 //module.exports.handler = serverless(app);
 
