@@ -3,32 +3,37 @@ const orderController = require('../controllers/myordersController');
 const { requireAuth } = require('../middleware/authMiddleware');
 const router = Router();
 
-router.get('/accepted', requireAuth, orderController.get_accepted_orders);
 /**
- * @swagger
- * /accepted:
- *  get: 
- *    tags: ['My orders']
- *    description: Get the list of all accepted orders
+* @swagger
+* paths:
+*   /accepted:
+*     get:
+*       summary: get accepted status details
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       responses:
+*         '200':
+*           description: get accepted details
+*         '400' :
+*           description: Error occured     
+*/
+router.get('/accepted', requireAuth, orderController.get_accepted_orders);
 
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
 
 router.get('/pending', requireAuth, orderController.get_pending_orders);
-
 /**
  * @swagger
  * /pending:
  *  get:
+ *    summary: get pending status  
+ *    security:
+ *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get the list of all pending orders
+ *    description: Get list of all pending Orders
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all pending Orders
  *      '400' :
  *        description: Error occured
  */
@@ -40,11 +45,14 @@ router.get('/inprocess', requireAuth, orderController.get_inprocess_orders);
  * @swagger
  * /inprocess:
  *  get:
+ *    summary: get inprocess status 
+ *    security:
+ *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get the list of all inprocess orders
+ *    description: Get list of all inprocess Orders
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all inprocess Orders
  *      '400' :
  *        description: Error occured
  */
@@ -55,45 +63,52 @@ router.get('/completedAndPaid', requireAuth, orderController.get_completed_paid_
  * @swagger
  * /completedAndPaid:
  *  get:
+ *    summary: get completedAndPaid status 
+ *    security:
+ *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get the list of all completed and paid orders
+ *    description: Get list of all completed and paid Orders
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all completed and paid Orders
  *      '400' :
  *        description: Error occured
  */
 
 router.get('/completedAndUnpaid', requireAuth, orderController.get_completed_unpaid_orders);
 
-
 /**
  * @swagger
- * /completedAndPaid:
+ * /completedAndUnpaid:
  *  get:
+ *    summary: get completedAndUnpaid status 
+ *    security:
+ *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get the list of all completed but unpaid orders
+ *    description: Get list of all completed but unpaid Orders
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all completed but unpaid Orders
  *      '400' :
  *        description: Error occured
  */
 
-router.get('/cancelled', requireAuth, orderController.get_cancelled_orders);
 
+router.get('/cancelled', requireAuth, orderController.get_cancelled_orders);
 
 /**
  * @swagger
  * /cancelled:
  *  get:
+ *    summary: get cancelled status 
+ *    security:
+ *      - bearerAuth: []
  *    tags: ['My orders']
- *    description: Get the list of all cancelled orders
+ *    description: Get list of all cancelled Orders
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all cancelled Orders
  *      '400' :
  *        description: Error occured
  */
-
 module.exports = router;

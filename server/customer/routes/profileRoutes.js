@@ -12,18 +12,61 @@ router.post('/profile', requireAuth,  urlencodedParser, profileController.post_p
 
 
 /**
- * @swagger
- * /profile:
- *  post:
- *    description: Create new profile
- *    tags : ['profile']
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
-
+* @swagger
+* paths:
+*  /profile:
+*    post:
+*      tags: 
+*        - name: Profile
+*      summary: create a new profile
+*      security:
+*         - bearerAuth: []
+*      requestBody:
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 car:
+*                   type: object
+*                   properties:
+*                     carName:
+*                       type: string
+*             schema1:
+*               type: object
+*               properties:
+*                 addresses:
+*                   type: object
+*                   properties:
+*                     country:
+*                       type: string
+*                     zipcode:
+*                       type: string
+*                 name:
+*                   type: string
+*                 mobile:
+*                   type: integer
+*                 noOfWashes:
+*                   type: string
+*             examples:
+*               '0':
+*                 value: |-
+*                   {
+*                       "name":"inprocess",
+*                       "mobile":10000,
+*                       "noOfWashes":100,
+*                       "addresses":
+*                           {
+*                            "country":"india",
+*                            "zipcode":500000
+*                           }
+*                    }
+*      responses:
+*        '201':
+*          description: order profile
+*        '400':
+*          description: Error occured        
+*/
 router.get('/profile', requireAuth, urlencodedParser,profileController.get_specific_profile);
 
 
@@ -31,29 +74,76 @@ router.get('/profile', requireAuth, urlencodedParser,profileController.get_speci
  * @swagger
  * /profile:
  *  get:
- *    tags : ['profile']
- *    description: get the profile details of a customer
+ *    summary: get profile details 
+ *    security:
+ *      - bearerAuth: []
+ *    tags: ['Profile']
+ *    description: Get list of all profile 
  *    responses:
- *      '201':
- *        description: A successful response
+ *      '200':
+ *        description: list of all profile 
  *      '400' :
  *        description: Error occured
  */
 
 router.put('/profile', requireAuth, urlencodedParser,profileController.update_profile);
 
-/**
- * @swagger
- * /profile:
- *  put:
- *    tags : ['profile']
- *    description: update the profile details of the customer
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
 
+/**
+* @swagger
+* paths:
+*  /profile:
+*    put:
+*      tags: 
+*        - name: Profile
+*      summary: update a new profile
+*      security:
+*         - bearerAuth: []
+*      requestBody:
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 car:
+*                   type: object
+*                   properties:
+*                     carName:
+*                       type: string
+*             schema1:
+*               type: object
+*               properties:
+*                 addresses:
+*                   type: object
+*                   properties:
+*                     country:
+*                       type: string
+*                     zipcode:
+*                       type: string
+*                 name:
+*                   type: string
+*                 mobile:
+*                   type: integer
+*                 noOfWashes:
+*                   type: string
+*             examples:
+*               '0':
+*                 value: |-
+*                   {
+*                       "name":"inprocess",
+*                       "mobile":10000,
+*                       "noOfWashes":100,
+*                       "addresses":
+*                           {
+*                            "country":"india",
+*                            "zipcode":500000
+*                           }
+*                    }
+*      responses:
+*        '200':
+*          description: updated profile
+*        '400':
+*          description: Error occured        
+*/
 
 module.exports = router;

@@ -9,64 +9,159 @@ const urlencodedparser = bodyParser.urlencoded({extended: true});
 
 //Get the booking page
 router.get('/order', requireAuth, ordercontroller.get_order);
+
+
+
 /**
- * @swagger
- * /order:
- *  post:
- *    tags: ['orders']
- *    description: book a new order
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*   /order:
+*     get:
+*       summary: get order status details
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       responses:
+*         '200':
+*           description: get order details
+*         '400' :
+*           description: Error occured     
+*/
 
 router.post('/order', requireAuth, urlencodedparser, ordercontroller.create_order);
 /**
- * @swagger
- * /order:
- *  put:
- *    tags: ['orders']
- *    description: cancel the order by id
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*  /order:
+*    post:
+*      tags: 
+*        - name: Orders
+*      summary: create a new order
+*      security:
+*         - bearerAuth: []
+*      requestBody:
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 userDetails:
+*                   type: object
+*                   properties:
+*                     userId:
+*                       type: string
+*                     name:
+*                       type: string
+*                     mobile:
+*                       type: integer
+*             schema1:
+*               type: object
+*               properties:
+*                 address:
+*                   type: object
+*                   properties:
+*                     userId:
+*                       type: string
+*                     name:
+*                       type: string
+*                     mobile:
+*                       type: integer
+*                 status:
+*                   type: string
+*                 totalCost:
+*                   type: integer
+*                 package:
+*                   type: string
+*                 isPaymentDone:
+*                   type: boolean
+*             examples:
+*               '0':
+*                 value: |-
+*                   {
+*                       "status":"inprocess",
+*                       "package":10000,
+*                       "totalCost":100,
+*                       "isPaymentDone":true,
+*                       "addresses":
+*                           {
+*                            "country":"india",
+*                            "city":"city1"
+*                           }
+*                    }
+*      responses:
+*        '201':
+*          description: order profile
+*        '400':
+*          description: Error occured        
+*/
 
 router.put('/order/:id', urlencodedparser, ordercontroller.cancel_order);
 
 /**
- * @swagger
- * /orderPayment:
- *  put:
- *    tags: ['orders']
- *    description: Change the payment status to done by the order id
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*   /order/{id}:
+*     put:
+*       summary: change order status to accepted
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       parameters:
+*         - in: path
+*           name: id
+*           type: string
+*           required: true
+*           example: 613770dca6f97714e897e8aa
+*           description: Object Id of the order to get. 
+*       responses:
+*         '200':
+*           description: upated order details
+*         '400' :
+*           description: Error occured     
+*/
 
 router.put('/orderPayment/:id', requireAuth, urlencodedparser, ordercontroller.orderPaymentFulfilled);
 
-
 /**
- * @swagger
- * /washcount:
- *  put:
- *    tags: ['orders']
- *    description: Increase the wash count for the customer
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*   /orderPayment/{id}:
+*     put:
+*       summary: change orderPayment status to accepted
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       parameters:
+*         - in: path
+*           name: id
+*           type: string
+*           required: true
+*           example: 613770dca6f97714e897e8aa
+*           description: Object Id of the orderPayment to get. 
+*       responses:
+*         '200':
+*           description: upated orderPayment details
+*         '400' :
+*           description: Error occured     
+*/
 
 router.put('/washcount', requireAuth, urlencodedparser, ordercontroller.increaseWashCount)
+
+
+/**
+* @swagger
+* paths:
+*   /washcount:
+*     put:
+*       summary: get washcount status to accepted
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       responses:
+*         '200':
+*           description: get washcount details
+*         '400' :
+*           description: Error occured     
+*/
 
 module.exports = router;

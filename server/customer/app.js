@@ -44,24 +44,31 @@ app.use('/',[authRoutes,profileRoutes,orderRoutes,carRoutes,myordersRoutes]);
 
 
 //Swagger Config
-// Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
   swaggerDefinition: {
+    openapi: "3.0.1",
     info: {
       version: "1.0.0",
-      title: "CAR WAS API's",
-      description: "API's from Washer Microservice",
-      contact: {
-        name: "Mumthaz Mounika"
+      title: "Customer API",
+      description: "API's for Customer -On demand carwash system",
+      servers: ["http://localhost:4000"],
+    },
+
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
       },
-      
-     server :["http://localhost:4000"],
-     
-    }
+    },
+  
   },
-  // ['.routes/*.js']
-  apis:  ['./routes/*.js']
+  swagger: "2.0",
+  apis: ["./routes/*.js"],
 };
+
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 

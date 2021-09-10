@@ -15,7 +15,7 @@ router.get('/signup', authController.get_signup);
  * @swagger
  * /signup:
  *  get:
- *    tags: ['auth']
+ *    tags: ['Auth']
  *    description: signup a new customer
  *    responses:
  *      '200':
@@ -29,45 +29,72 @@ router.post('/signup', urlencodedParser ,authController.post_signup);
 
 
 /**
- * @swagger
- * /signup:
- *  post:
- *    tags: ['auth']
- *    description: signup a new customer
- *    parameters:
- *          email :
- *              type :string
- *          password:
- *              type: string
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*  /signup:
+*    post:
+*      tags: 
+*        - name: Auth
+*      description: Signup a new customer
+*      requestBody:
+*        content:
+*          application/json:
+*            schema:
+*              type: object
+*              properties:
+*                password:
+*                  type: string
+*                email:
+*                  type: string
+*            examples:
+*              '0':
+*                value: |-
+*                  {
+*                      "email":"customer@gmail.com",
+*                      "password":"customer@123"
+*                  }
+*      responses:
+*        '201':
+*          description: Userid customer
+*        '400':
+*          description: Error occured        
+*/
 
 //Routes for login
 router.get('/login', authController.get_login);
 
 router.post('/login',urlencodedParser ,authController.post_login);
-
 /**
- * @swagger
- * /login:
- *  post:
- *    tags: ['auth']
- *    description: login the customer
- *      parameters:
- *          email :
- *              type :string
- *          password:
- *              type: string
- *    responses:
- *      '201':
- *        description: successfully get all cars
- *      '400' :
- *        description: Error occured
- */
+* @swagger
+* paths:
+*  /login:
+*    post:
+*      tags: 
+*        - name: Auth
+*      description: Login a new customer
+*      requestBody:
+*        content:
+*          application/json:
+*            schema:
+*              type: object
+*              properties:
+*                password:
+*                  type: string
+*                email:
+*                  type: string
+*            examples:
+*              '0':
+*                value: |-
+*                  {
+*                      "email":"customer@gmail.com",
+*                      "password":"customer@123"
+*                  }
+*      responses:
+*        '201':
+*          description: JWT of logged in customer
+*        '400':
+*          description: Error occured        
+*/
 
 
 module.exports = router;

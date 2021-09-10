@@ -6,17 +6,20 @@ const router = Router();
 
 router.get('/cars', carController.get_cars);
 
-/**
- * @swagger
- * /cars:
- *  get:
- *    tags: ['cars']
- *    description: Get the list of active cars
- *    responses:
- *      '201':
- *        description: successfully get all cars
- *      '400' :
- *        description: Error occured
- */
 
+/**
+* @swagger
+* paths:
+*   /cars:
+*     get:
+*       summary: get cars status details
+*       security:
+*         - bearerAuth: []
+*       tags: ['Orders']
+*       responses:
+*         '200':
+*           description: get cars details
+*         '400' :
+*           description: Error occured     
+*/
 module.exports = router;
