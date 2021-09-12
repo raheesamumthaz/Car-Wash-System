@@ -1,6 +1,6 @@
 # serverless.yml
 
-service: Washer-service
+service: Washer-API-service
 
 provider:
   name: aws

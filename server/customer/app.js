@@ -64,11 +64,16 @@ const swaggerOptions = {
         },
       },
     },
-     servers: [
+    servers: [
+      {
+        url:"https://bqedlhlpg8.execute-api.us-east-1.amazonaws.com/dev" ,
+        description: 'Development AWS server'
+      },
       {
         url: 'http://localhost:4000',
         description: 'Development server'
-      },
+      }
+      
     ]
   
   },
@@ -78,7 +83,7 @@ const swaggerOptions = {
 
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
+app.use("/customer-api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
 
 
 //app.listen(4000, () => console.log(`Listening on: 4000`));

@@ -61,9 +61,14 @@ const swaggerOptions = {
     },
     servers: [
       {
+        url:"https://1zwzg59zkb.execute-api.us-east-1.amazonaws.com/dev" ,
+        description: 'Development AWS server'
+      },
+      {
         url: 'http://localhost:4000',
         description: 'Development server'
-      },
+      }
+      
     ]
   
   },
