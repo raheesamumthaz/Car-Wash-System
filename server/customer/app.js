@@ -66,7 +66,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url:"https://bqedlhlpg8.execute-api.us-east-1.amazonaws.com/dev" ,
+        url:"https://1uv25ov9gk.execute-api.us-east-1.amazonaws.com/dev" ,
         description: 'Development AWS server'
       },
       {
