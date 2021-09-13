@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 //Connect to Customers Database
-const dbURI="mongodb+srv://customer:admin@cluster0.dktgi.mongodb.net/Customer?retryWrites=true&w=majority"
+const dbURI="mongodb+srv://customer:admin@cluster0.7m9bb.mongodb.net/Customer?retryWrites=true&w=majority"
 mongoose
   .connect(dbURI, {
     
